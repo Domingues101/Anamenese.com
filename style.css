@@ -1,11 +1,11 @@
 :root {
-  background: linear-gradient(135deg, #050505 0%, #f17b0dc0 100%);
+  background: linear-gradient(135deg, #050505 0%, #f77b07dc 100%);
   --surface: #f17b0d86;
   --ink: #000000;
-  --muted: #f3f0f0;
+  --muted: #c5c2c2;
   --line: #0a0a0a;
   --accent: #0a0a0ad8;
-  --accent-soft: #d9ebe8;
+  --accent-soft: #fdfdfd;
   --error: #b3261e;
   --radius: 10px;
   --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
@@ -349,7 +349,7 @@ textarea:focus-visible {
 .status.fail {
   padding: 1rem 1.25rem;
   color: var(--error);
-  background: #f9e3e1;
+  background: #c5c2c2;
   border-radius: var(--radius);
 }
  
