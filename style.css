@@ -1,10 +1,10 @@
 :root {
-  background: linear-gradient(135deg, #D2691E 0%, #000000 100%);
-  --surface: #ffffff;
+  background: linear-gradient(135deg, #050505 0%, #f17b0dc0 100%);
+  --surface: #f17b0d86;
   --ink: #000000;
   --muted: #f3f0f0;
-  --line: #cfdad7;
-  --accent: #0a5c5a;
+  --line: #0a0a0a;
+  --accent: #0a0a0ad8;
   --accent-soft: #d9ebe8;
   --error: #b3261e;
   --radius: 10px;
@@ -97,7 +97,7 @@ select,
 textarea {
   width: 100%;
   padding: .7rem .85rem;
-  background: #fff;
+  background: #c5c2c2;
   color: var(--ink);
   font: inherit;
   border: 1.5px solid var(--line);
@@ -147,7 +147,7 @@ textarea:focus-visible {
   padding: .85rem;
   border: 1.5px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: #c5c2c2;
   cursor: pointer;
   overflow: hidden;
   transition: border-color .15s, background-color .15s;
@@ -184,7 +184,7 @@ textarea:focus-visible {
 .level:has(input:checked) { border-color: var(--accent); }
 .level:has(input:checked) .bar { background: var(--accent); }
 .level:has(input:checked) strong,
-.level:has(input:checked) small { color: #fff; }
+.level:has(input:checked) small { color: #c5c2c2; }
  
 .level:has(input:focus-visible) {
   box-shadow: 0 0 0 3px var(--accent-soft);
@@ -202,7 +202,7 @@ textarea:focus-visible {
   font-weight: 500;
   border: 1.5px solid var(--line);
   border-radius: 999px;
-  background: #fff;
+  background: #c5c2c2;
   cursor: pointer;
   transition: background-color .15s, border-color .15s, color .15s;
 }
@@ -212,7 +212,7 @@ textarea:focus-visible {
 .chip input:checked + span {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #c5c2c2;
 }
  
 .chip input:focus-visible + span { box-shadow: 0 0 0 3px var(--accent-soft); }
@@ -222,7 +222,7 @@ textarea:focus-visible {
   position: relative;
   padding: 1.75rem 1.25rem;
   text-align: center;
-  background: #f6faf9;
+  background: #c5c2c2;
   border: 2px dashed var(--line);
   border-radius: 8px;
   transition: border-color .15s, background-color .15s;
@@ -265,7 +265,7 @@ textarea:focus-visible {
   width: 3rem;
   height: 3rem;
   background: var(--accent);
-  color: #fff;
+  color: #c5c2c2;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: .8rem;
@@ -287,7 +287,7 @@ textarea:focus-visible {
   font-size: .875rem;
   font-weight: 600;
   color: var(--error);
-  background: #fff;
+  background: #c5c2c2;
   border: 1.5px solid var(--line);
   border-radius: 8px;
   cursor: pointer;
@@ -323,7 +323,7 @@ textarea:focus-visible {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
-  color: #fff;
+  color: #c5c2c2;
   background: var(--accent);
   border: 0;
   border-radius: var(--radius);
