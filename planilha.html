@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planilha de Anamnese</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Figtree', Arial, sans-serif;
+    }
+    body {
+      padding: 20px;
+      background-color: #f4f6f9;
+    }
+    h2 {
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    }
+    p.subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .toolbar {
+      margin-bottom: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-add {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-export {
+      background-color: #007bff;
+      color: white;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .table-container {
+      overflow-x: auto;
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+    th, td {
+      border: 1px solid #dee2e6;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 13px;
+    }
+    th {
+      background-color: #e9ecef;
+      color: #495057;
+    }
+    td[contenteditable="true"]:focus {
+      outline: 2px solid #007bff;
+      background-color: #e8f0fe;
+    }
+    .btn-remove {
+      background-color: #dc3545;
+      color: white;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Planilha de Controle - Anamnese</h2>
+  <p class="subtitle">Registros sincronizados com o formulário de avaliação dos alunos.</p>
+
+  <div class="toolbar">
+    <button class="btn-add" onclick="adicionarLinha()">+ Adicionar Linha</button>
+    <button class="btn-export" onclick="exportarCSV()">📥 Exportar para CSV (Excel)</button>
+  </div>
+
+  <div class="table-container">
+    <table id="planilha">
+      <thead>
+        <tr>
+          <th>Data/Hora</th>
+          <th>Nome Completo</th>
+          <th>CPF</th>
+          <th>Nascimento</th>
+          <th>Nível</th>
+          <th>Modalidades</th>
+          <th>Frequência</th>
+          <th>Observações</th>
+          <th>Laudo</th>
+          <th style="width: 50px; text-align: center;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td contenteditable="true">07/11/2026 14:30</td>
+          <td contenteditable="true">João da Silva</td>
+          <td contenteditable="true">123.456.789-00</td>
+          <td contenteditable="true">15/05/1990</td>
+          <td contenteditable="true">Intermediário</td>
+          <td contenteditable="true">Musculação, Corrida</td>
+          <td contenteditable="true">3 a 4 vezes</td>
+          <td contenteditable="true">Sem dores aparentes</td>
+          <td contenteditable="true">laudo_joao.pdf</td>
+          <td style="text-align: center;"><button class="btn-remove" onclick="removerLinha(this)">X</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function adicionarLinha() {
+      const tbody = document.querySelector("#planilha tbody");
+      const novaLinha = document.createElement("tr");
+      const dataHoraHoje = new Date().toLocaleString("pt-BR");
+
+      novaLinha.innerHTML = `
+        <td contenteditable="true">${dataHoraHoje}</td>
+        <td contenteditable="true">Nome do Aluno</td>
+        <td contenteditable="true">000.000.000-00</td>
+        <td contenteditable="true">DD/MM/AAAA</td>
+        <td contenteditable="true">Iniciante</td>
+        <td contenteditable="true">Musculação</td>
+        <td contenteditable="true">1 a 2 vezes</td>
+        <td contenteditable="true">Nenhuma</td>
+        <td contenteditable="true">arquivo.pdf</td>
+        <td style="text-align: center;"><button class="btn-remove" onclick="removerLinha(this)">X</button></td>
+      `;
+
+      tbody.appendChild(novaLinha);
+    }
+
+    function removerLinha(btn) {
+      const linha = btn.closest("tr");
+      linha.remove();
+    }
+
+    function exportarCSV() {
+      const tabela = document.getElementById("planilha");
+      let csv = [];
+      const linhas = tabela.querySelectorAll("tr");
+
+      for (let i = 0; i < linhas.length; i++) {
+        const linha = [];
+        const cols = linhas[i].querySelectorAll("th, td");
+        
+        // Pega todas as colunas exceto a última (Ações)
+        for (let j = 0; j < cols.length - 1; j++) {
+          let texto = cols[j].innerText.replace(/"/g, '""');
+          linha.push(`"${texto}"`);
+        }
+        
+        csv.push(linha.join(";"));
+      }
+
+      const csvString = "\uFEFF" + csv.join("\n");
+      const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      
+      link.setAttribute("href", url);
+      link.setAttribute("download", "fichas_anamnese_clientes.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>
