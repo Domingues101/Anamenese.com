@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Envio de Laudo Médico | Anamnese</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .form-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 24px auto;
+      background: #c5c3c3;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+    .form-container iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .back-action {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      
+    }
+    .btn-secondary {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: transparent;
+      border: 1px solid var(--border-color, #080808);
+      border-radius: 8px;
+      color: var(--text-color, #faf9f9);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <h1>Envio de Laudo Médico</h1>
+      <p>Anexe abaixo o seu laudo em PDF ou Word. Os arquivos são salvos com segurança diretamente na nossa pasta do Google Drive.</p>
+    </header>
+
+    <div class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdmJk0dve5uvizqQ3bQtpeM3P3DuEWFhcMNsVxbifWRQu177Q/viewform?embedded=true">
+        Carregando...
+      </iframe>
+    </div>
+
+    <div class="back-action">
+      <a href="index.html" class="btn-secondary">← Voltar para a Ficha de Anamnese</a>
+    </div>
+  </main>
+</body>
+</html>
